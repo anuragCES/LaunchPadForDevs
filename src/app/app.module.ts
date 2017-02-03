@@ -1,30 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 // My components
 import { AppComponent } from './app.component'
+import { AppRoutingModule, routableComponents } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found.component';
+
+// My services
+import { BoardService } from './board/common/board.service'
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
+    // Custom imports
+    AppRoutingModule,
   ],
-  declarations: [ AppComponent, PageNotFoundComponent ],
-  bootstrap: [ AppComponent ]
+  declarations: [ AppComponent, PageNotFoundComponent, routableComponents ],
+  providers: [BoardService],
+  bootstrap: [ AppComponent ],
 })
-export class AppModule {
-
-    constructor () {
-        console.log('In constructor');
-    }
-
- }
-
-
-/*
-Copyright 2016 JohnPapa.net, LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://bit.ly/l1cense
-*/
+export class AppModule {}

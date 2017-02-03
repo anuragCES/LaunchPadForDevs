@@ -1,0 +1,17 @@
+<div class='lpd-list'>
+    <ul>
+        <li *ngFor="let board of existingBoards">
+            <div>
+                <div>
+                    {{board.name}}
+                </div>
+                <div class="lpd-list-pending">
+                    {{board.pending}}
+                </div>
+                <div>
+                    <a [routerLink]="['/board/' + board.id]" href="" >Open</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

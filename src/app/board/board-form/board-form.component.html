@@ -1,0 +1,4 @@
+<div>
+    <input type="text" id="boardName" [(ngModel)]="board.name" />
+    <button (click)="board.name && createBoard(board)" [disabled]="!board.name">Create</button>
+</div>
