@@ -9,7 +9,8 @@ import { AppRoutingModule, routableComponents } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 // My services
-import { BoardService } from './board/common/board.service'
+import { BoardService } from './board/common/board.service';
+import { TaskService } from './task/common/task.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { BoardService } from './board/common/board.service'
     AppRoutingModule,
   ],
   declarations: [ AppComponent, PageNotFoundComponent, routableComponents ],
-  providers: [BoardService],
+  providers: [BoardService,TaskService],
   bootstrap: [ AppComponent ],
 })
 export class AppModule {}

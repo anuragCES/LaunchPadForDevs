@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 // My components
 import { BoardListComponent } from './board/board-list/board-list.component';
 import { BoardFormComponent } from './board/board-form/board-form.component';
+import { TaskListComponent } from './task/task-list/task-list.component';
+import { TaskComponent } from './task/task.component';
 
 // routes
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -27,6 +29,8 @@ export class AppRoutingModule { }
 export const routableComponents = [
     BoardFormComponent,
     BoardListComponent,
+    TaskListComponent,
+    TaskComponent,
     DashboardComponent,
     PageNotFoundComponent,
     BoardComponent

@@ -2,7 +2,20 @@
     <div *ngIf="error">
         {{error}}
     </div>
-    <h1>
-        {{board.name}}
-    </h1>
+    <div class="lpd-board-cont">
+        <h1>
+            {{board.name}}
+        </h1>
+        <input type="text" id="laneName" [(ngModel)]="laneName" />
+        <button (click)="laneName && addLane(laneName)" [disabled]="!laneName">Add Lane</button>
+    </div>
+    <div class="lpd-taskLists">    
+        <task-list 
+            *ngFor="let taskList of board.taskLists" 
+            [title]="taskList" 
+            [tasks]="getTasksByListName(taskList)"
+            [board]="board.id"
+            (taskCreated)="taskCreated()">
+        </task-list>
+    </div>
 </div>

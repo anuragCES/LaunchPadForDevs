@@ -1,0 +1,8 @@
+.lpd-taskLists {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lpd-board-cont {
+    display: flex;
+}

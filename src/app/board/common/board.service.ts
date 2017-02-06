@@ -1,5 +1,5 @@
 // Fake APIs
-import { getAllBoards, addBoard, getBoardById } from './../../../api/boards';
+import { getAllBoards, addBoard, getBoardById, setBoards } from './../../../api/boards';
 
 import { Injectable } from '@angular/core';
 import { Board } from './board.model'
@@ -22,6 +22,10 @@ export class BoardService {
 
     getBoardById (id): any {
         return getBoardById(id);
+    }
+
+    createLane (id, laneName) {
+        return setBoards(id, laneName);
     }
 }
 

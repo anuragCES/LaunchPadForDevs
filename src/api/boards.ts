@@ -2,7 +2,7 @@ const boards = [
     {
         id: 1,
         name: 'Scrum',
-        TaskLists: [
+        taskLists: [
             'Backlog',
             'Todo',
             'In Progress',
@@ -14,7 +14,7 @@ const boards = [
     {
         id: 2,
         name: 'Weekdays',
-        TaskLists: [
+        taskLists: [
             'Monday',
             'Tuesday',
             'Wednesday',
@@ -47,4 +47,15 @@ export function getBoardById (id) {
         }
     })
     return resultBoard;
+}
+
+export function setBoards (id, laneName) {
+    boards.map((board) => {
+        if (board.id === id) {
+            board.taskLists.push(laneName);
+        }
+        boards.push(board);
+    })
+
+    return boards;
 }

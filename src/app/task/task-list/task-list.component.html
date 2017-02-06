@@ -1,0 +1,16 @@
+<div>
+    <div class="lpd-list-title">    
+        <div>
+            {{title}}
+        </div>
+        <div>
+            <button (click)="addTask()">Add Task</button>
+        </div>
+    </div>
+    <div class="lpd-list">
+        <task *ngFor="let task of tasks" [data]="task">loading...</task>
+    </div>
+    <div>
+        <input type="text" [(ngModel)]="taskName" (blur)="createTask(taskName)"/>
+    </div>
+</div>
