@@ -4,7 +4,7 @@
   "description": "Application where developers can plan the day. It will make sure to remind them about planning, analyzing, training and testing the task before end of the day.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "karma start karma.config.js",
     "start": "webpack-dev-server --inline --progress --port 8080"
   },
   "dependencies": {
@@ -29,7 +29,7 @@
     "zone.js": "~0.7.4"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.5.35",
+    "@types/jasmine": "^2.5.41",
     "@types/node": "^6.0.45",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.0-beta.18",

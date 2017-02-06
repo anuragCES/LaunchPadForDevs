@@ -8,9 +8,10 @@
         </div>
     </div>
     <div class="lpd-list">
-        <task *ngFor="let task of tasks" [data]="task">loading...</task>
+        <task *ngFor="let task of tasks" [data]="task" (taskDeleted)="taskDeleted()">loading...</task>
     </div>
-    <div>
-        <input type="text" [(ngModel)]="taskName" (blur)="createTask(taskName)"/>
+    <div *ngIf="newTaskInProgress">
+        <input type="text" [(ngModel)]="taskName" (blur)="newTaskInProgress && createTask(taskName)"/>
+        <button (click)="newTaskInProgress = false" >Close</button>
     </div>
 </div>

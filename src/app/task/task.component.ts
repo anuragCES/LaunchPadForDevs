@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TaskService } from './common/task.service';
 import { Task } from './common/task.model';
 
@@ -9,11 +9,16 @@ import { Task } from './common/task.model';
 export class TaskComponent implements OnInit {
 
   @Input() data: Task;
+  @Output() taskDeleted: EventEmitter<number> = new EventEmitter();
 
   constructor (private taskService: TaskService) {
   }
 
   ngOnInit () {
-    console.log(this.data);
+  }
+
+  deleteTask ({id}) {
+    this.taskService.deleteTask(id);
+    this.taskDeleted.emit(id);
   }
 }

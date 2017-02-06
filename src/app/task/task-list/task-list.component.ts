@@ -10,22 +10,53 @@ import { Task } from './../common/task.model';
 export class TaskListComponent implements OnInit {
 
   @Input() title;
-  @Input() tasks: Array<Task>;
+  tasks: Array<Task>;
   @Input() board: number;
   @Output() taskCreated: EventEmitter<string> = new EventEmitter();
+  newTaskInProgress: boolean;
+  taskName: string;
 
   constructor (private taskService: TaskService) {
+    this.newTaskInProgress = false;
   }
 
   ngOnInit () {
-    console.log(this.tasks);
-    
+      this.tasks = this.getTasksByListName(this.title);
   }
 
-  createTask (taskName) {
-    console.log('createTask');
+  isTaskValid (task, taskList) {
+    if (task.taskList.toUpperCase().trim() === taskList.toUpperCase().trim()) {
+      return true;
+    }
+    return false;
+  }
+
+  getTasksByListName (taskList: string) {
+    let tasks = [];
     
-    this.taskService.createTask(taskName, this.title, this.board);
-    this.taskCreated.emit(taskName);
+    this.taskService.getTasksByBoard(this.board).map((task) => {
+      
+      if (this.isTaskValid(task, taskList)) {
+        tasks.push(task);
+      }
+    })
+    return tasks;
+  }
+
+  addTask () {
+    this.newTaskInProgress = true;
+  }
+
+
+  createTask (taskName) {
+    this.taskService.createTask(this.title, taskName, this.board);
+    this.tasks = this.getTasksByListName(this.title);
+    this.newTaskInProgress = false;
+    this.taskName = '';
+  }
+
+  taskDeleted (id) {
+    this.tasks = this.getTasksByListName(this.title);
+    this.taskName = '';
   }
 }

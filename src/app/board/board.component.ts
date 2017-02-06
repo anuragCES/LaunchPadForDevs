@@ -43,9 +43,6 @@ export class BoardComponent implements OnInit {
 
     getTasksByListName (taskList: string) {
       let tasks = [];
-      console.log('taskList');
-      console.log(taskList);
-      
       this.taskService.getTasksByBoard(this.id).map((task) => {
         if (this.isTaskValid(task, taskList)) {
           tasks.push(task);
@@ -62,17 +59,15 @@ export class BoardComponent implements OnInit {
 
     getBoardDetails () {
       this.board = this.boardService.getBoardById(this.id);
+      console.log(this.board);
+      
       if (!this.board)  {
         this.error = "No board exist, please create a new one!"
       }
     }
 
     taskCreated () {
-      console.log('taskCreated');
-      
       this.getBoardDetails();
-      console.log(this.board);
-      
     }
 
 }

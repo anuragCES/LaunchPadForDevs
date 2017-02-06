@@ -17,9 +17,7 @@ export class BoardFormComponent implements OnInit {
 
     ngOnInit () {
         this.clearBoard();
-
         this.existingBoards = this.boardService.getAll();
-        console.log(this.existingBoards);
     }
 
     clearBoard () {
