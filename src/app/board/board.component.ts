@@ -7,6 +7,8 @@ import { Board } from './common/board.model'
 import { TaskService } from './../task/common/task.service';
 import { Task } from './../task/common/task.model';
 
+import { Observable } from 'rxjs/Observable';
+
 @Component({
   templateUrl: './board.component.html',
   styleUrls: ['./common/board.component.css']
@@ -15,7 +17,7 @@ import { Task } from './../task/common/task.model';
 export class BoardComponent implements OnInit {
 
     private id: number;
-    private board: Board;
+    private board: Observable<Board>;
     private error: string;
     private tasks: Array<Task>;
     private laneName: string;
@@ -53,7 +55,7 @@ export class BoardComponent implements OnInit {
 
     addLane (laneName) {
       this.boardService.createLane(this.id, laneName);
-      this.getBoardDetails();
+      // this.getBoardDetails();
       this.laneName = '';
     }
 
@@ -67,7 +69,7 @@ export class BoardComponent implements OnInit {
     }
 
     taskCreated () {
-      this.getBoardDetails();
+      // this.getBoardDetails();
     }
 
 }

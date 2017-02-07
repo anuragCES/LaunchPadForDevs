@@ -13,7 +13,7 @@
         </div>
         <div class="lpd-taskLists">    
             <task-list 
-                *ngFor="let taskList of board.taskLists" 
+                *ngFor="let taskList of board.taskLists | async" 
                 [title]="taskList"
                 [board]="board.id"
                 (taskCreated)="taskCreated()">
